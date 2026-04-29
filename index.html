@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VORA | وكالة إبداعية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;900&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#050507;--deep:#0a0a0e;--card:#0f0f15;--text:#f0eff8;--muted:#6b6b85;--blue:#3b6ef8;--teal:#00d4d8;--orange:#f56b1e;--gold:#d4960f;--purple:#8b3cf7;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:'Tajawal',sans-serif;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;z-index:1000;transition:all .4s}
+nav.sc{background:rgba(5,5,7,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.9rem 5%}
+.nl{display:flex;align-items:center;gap:.6rem}
+.nl img{height:40px;mix-blend-mode:screen;filter:brightness(1.1)}
+.nw{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;background:linear-gradient(120deg,#fff 30%,var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:5px}
+.nlinks{display:flex;gap:2rem;list-style:none}
+.nlinks a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .3s}
+.nlinks a:hover{color:var(--text)}
+.nwa{display:flex;align-items:center;gap:.45rem;padding:.5rem 1.3rem;border:1px solid var(--border2);border-radius:50px;color:var(--text);text-decoration:none;font-size:.82rem;font-weight:600;transition:all .3s}
+.nwa:hover{background:rgba(37,211,102,.1);border-color:#25D366;color:#25D366}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.ham span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+.mmenu{display:none;position:fixed;inset:0;z-index:999;background:rgba(5,5,7,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mmenu.open{display:flex}
+.mmenu a{color:var(--text);text-decoration:none;font-size:1.6rem;font-weight:700;font-family:'Cormorant Garamond',serif;transition:color .3s}
+.mmenu a:hover{color:var(--teal)}
+.mclose{position:absolute;top:1.5rem;left:5%;font-size:1.8rem;color:var(--muted);cursor:pointer;background:none;border:none}
+
+/* HERO */
+#hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:6rem 5% 4rem}
+.hbg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 90% 70% at 50% 30%,rgba(59,110,248,.14) 0%,transparent 65%),radial-gradient(ellipse 60% 50% at 85% 80%,rgba(245,107,30,.1) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 15% 70%,rgba(139,60,247,.09) 0%,transparent 55%)}
+.hgrid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(59,110,248,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(59,110,248,.035) 1px,transparent 1px);background-size:70px 70px;animation:gs 25s linear infinite}
+@keyframes gs{0%{background-position:0 0}100%{background-position:0 70px}}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;animation:dr 14s ease-in-out infinite}
+.o1{width:500px;height:500px;background:rgba(59,110,248,.1);top:-150px;right:-150px}
+.o2{width:350px;height:350px;background:rgba(0,212,216,.07);bottom:-80px;left:-80px;animation-delay:-6s}
+.o3{width:280px;height:280px;background:rgba(139,60,247,.08);top:40%;left:15%;animation-delay:-10s}
+@keyframes dr{0%,100%{transform:translate(0,0)}33%{transform:translate(25px,-20px)}66%{transform:translate(-15px,25px)}}
+.hc{position:relative;z-index:2;max-width:800px}
+.hbadge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem 1.1rem;border:1px solid rgba(0,212,216,.25);border-radius:50px;font-size:.75rem;letter-spacing:3px;color:var(--teal);text-transform:uppercase;font-weight:600;margin-bottom:2.5rem;animation:fu .7s .1s both}
+.hbadge::before{content:'';width:5px;height:5px;background:var(--teal);border-radius:50%;animation:bl 2s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.3}}
+.hlogo{margin-bottom:1.8rem;animation:fu .8s .25s both}
+.hlogo img{height:110px;width:auto;mix-blend-mode:screen;filter:brightness(1.15) drop-shadow(0 0 40px rgba(59,110,248,.5));animation:fl 7s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.htitle{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,5vw,4.2rem);font-weight:300;line-height:1.2;margin-bottom:1.4rem;animation:fu .8s .4s both}
+.htitle strong{font-weight:700;background:linear-gradient(120deg,var(--blue),var(--teal),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hsub{font-size:1rem;color:var(--muted);line-height:1.85;max-width:520px;margin:0 auto 2.5rem;font-weight:300;animation:fu .8s .55s both}
+.hbtns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;animation:fu .8s .7s both}
+.bp{padding:.8rem 2.2rem;background:linear-gradient(135deg,var(--blue),var(--teal));border:none;border-radius:50px;color:#fff;font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:700;text-decoration:none;box-shadow:0 6px 28px rgba(59,110,248,.45);transition:transform .2s,box-shadow .2s}
+.bp:hover{transform:translateY(-3px);box-shadow:0 12px 38px rgba(59,110,248,.65)}
+.bg{padding:.8rem 2.2rem;background:transparent;border:1px solid var(--border2);border-radius:50px;color:var(--text);font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .3s}
+.bg:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
+.sh{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;z-index:2;animation:fu .8s 1.1s both}
+.sh span{font-size:.65rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+.shl{width:1px;height:44px;background:linear-gradient(var(--teal),transparent);animation:sp 2s ease-in-out infinite}
+@keyframes sp{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* STATS */
+.sbar{padding:2.5rem 5%;background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sinn{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.si{text-align:center;padding:1.2rem .5rem;border-right:1px solid var(--border)}
+.si:last-child{border-right:none}
+.sn{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--teal),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sl{font-size:.72rem;color:var(--muted);margin-top:.3rem;letter-spacing:1.5px;text-transform:uppercase}
+
+/* COMMONS */
+.slbl{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;letter-spacing:4px;color:var(--teal);text-transform:uppercase;font-weight:700;margin-bottom:1rem}
+.slbl::before{content:'';width:26px;height:1px;background:var(--teal)}
+.stit{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:600;line-height:1.15;margin-bottom:1rem}
+.stit em{font-style:italic;background:linear-gradient(120deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sbod{color:var(--muted);font-size:1rem;line-height:1.85;font-weight:300}
+
+/* ABOUT */
+#about{padding:6rem 5%}
+.ainn{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.abox{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:3.5rem;text-align:center;position:relative;overflow:hidden}
+.abox::before{content:'';position:absolute;inset:-1px;background:conic-gradient(from 0deg,var(--blue),var(--teal),var(--orange),var(--purple),var(--blue));border-radius:24px;z-index:0;opacity:.2;animation:sp2 10s linear infinite}
+.abox::after{content:'';position:absolute;inset:1px;background:var(--card);border-radius:23px;z-index:1}
+@keyframes sp2{to{transform:rotate(360deg)}}
+.abox img{height:120px;position:relative;z-index:2;mix-blend-mode:screen;filter:brightness(1.1) drop-shadow(0 0 35px rgba(59,110,248,.5));animation:fl 6s ease-in-out infinite}
+.atag{position:absolute;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:.7rem 1.1rem;font-size:.78rem;font-weight:700;z-index:10;white-space:nowrap;animation:tf 4s ease-in-out infinite}
+.at1{top:-12px;right:-15px;color:var(--teal);border-color:rgba(0,212,216,.3)}
+.at2{bottom:15px;right:-20px;color:var(--orange);border-color:rgba(245,107,30,.3);animation-delay:-2s}
+@keyframes tf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.afs{margin-top:2rem;display:flex;flex-direction:column;gap:.8rem}
+.af{display:flex;align-items:center;gap:.9rem;padding:.9rem 1.2rem;background:var(--card);border:1px solid var(--border);border-radius:12px;transition:border-color .3s}
+.af:hover{border-color:rgba(0,212,216,.3)}
+.afic{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.afic svg{width:16px;height:16px}
+.af span{font-size:.88rem;color:var(--muted)}
+
+/* SERVICES */
+#services{padding:6rem 5%;background:var(--deep)}
+.swrap{max-width:1200px;margin:0 auto}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:3.5rem}
+.sv{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.sv::after{content:'';position:absolute;inset:0;background:var(--sg);opacity:0;transition:opacity .4s;border-radius:20px}
+.sv:hover{transform:translateY(-6px);box-shadow:0 22px 55px rgba(0,0,0,.45);border-color:rgba(255,255,255,.14)}
+.sv:hover::after{opacity:1}
+.svic{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;position:relative;z-index:1}
+.svic svg{width:24px;height:24px}
+.sv h3{font-size:1.1rem;font-weight:700;margin-bottom:.7rem;position:relative;z-index:1}
+.sv p{color:var(--muted);font-size:.88rem;line-height:1.8;font-weight:300;position:relative;z-index:1}
+.sva{margin-top:1.5rem;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);position:relative;z-index:1;transition:color .3s}
+.sv:hover .sva{color:var(--teal)}
+.s1{--sg:linear-gradient(135deg,rgba(59,110,248,.09),transparent)}.s1 .svic{background:rgba(59,110,248,.12);color:var(--blue)}
+.s2{--sg:linear-gradient(135deg,rgba(0,212,216,.08),transparent)}.s2 .svic{background:rgba(0,212,216,.12);color:var(--teal)}
+.s3{--sg:linear-gradient(135deg,rgba(245,107,30,.08),transparent)}.s3 .svic{background:rgba(245,107,30,.12);color:var(--orange)}
+.s4{--sg:linear-gradient(135deg,rgba(139,60,247,.09),transparent)}.s4 .svic{background:rgba(139,60,247,.12);color:var(--purple)}
+.s5{--sg:linear-gradient(135deg,rgba(212,150,15,.08),transparent)}.s5 .svic{background:rgba(212,150,15,.12);color:var(--gold)}
+
+/* GALLERY */
+#gallery{padding:6rem 5%}
+.gwrap{max-width:1300px;margin:0 auto}
+.ghead{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+.ggrid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+.gi{border-radius:18px;overflow:hidden;position:relative;background:var(--card);border:1px solid var(--border);cursor:pointer;transition:transform .35s,box-shadow .35s}
+.gi:hover{transform:scale(1.02);box-shadow:0 18px 50px rgba(0,0,0,.5);border-color:rgba(255,255,255,.16)}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.gi:hover img{transform:scale(1.06)}
+.gbig{grid-column:1/8;grid-row:1/3;min-height:420px}
+.gtr{grid-column:8/13;grid-row:1;min-height:200px}
+.gbr{grid-column:8/13;grid-row:2;min-height:200px}
+.gb1{grid-column:1/5;grid-row:3;min-height:220px}
+.gb2{grid-column:5/9;grid-row:3;min-height:220px}
+.gb3{grid-column:9/13;grid-row:3;min-height:220px}
+.gov{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,7,.8) 0%,transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:1.2rem 1.4rem}
+.gi:hover .gov{opacity:1}
+.glbl{font-size:.88rem;font-weight:700}
+.gsub{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:.15rem}
+.cb{position:absolute;top:.9rem;right:.9rem;background:rgba(5,5,7,.65);backdrop-filter:blur(8px);border:1px solid var(--border2);border-radius:9px;padding:.4rem .65rem;display:flex;align-items:center;gap:.35rem;font-size:.68rem;color:rgba(255,255,255,.7);font-weight:600;letter-spacing:.5px;z-index:3}
+.cb svg{width:12px;height:12px;color:var(--teal)}
+
+/* PROCESS */
+#process{padding:6rem 5%;background:var(--deep)}
+.pwrap{max-width:1200px;margin:0 auto}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:4rem;position:relative}
+.pgrid::before{content:'';position:absolute;top:36px;right:12%;left:12%;height:1px;background:linear-gradient(90deg,transparent,var(--teal),var(--blue),transparent);opacity:.2}
+.pc{text-align:center;padding:2rem 1.5rem;background:var(--card);border:1px solid var(--border);border-radius:20px;transition:transform .3s,box-shadow .3s}
+.pc:hover{transform:translateY(-5px);box-shadow:0 18px 45px rgba(0,0,0,.4)}
+.pn{width:54px;height:54px;border-radius:50%;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700}
+.pn1{background:rgba(59,110,248,.15);color:var(--blue);border:2px solid rgba(59,110,248,.35)}
+.pn2{background:rgba(0,212,216,.15);color:var(--teal);border:2px solid rgba(0,212,216,.35)}
+.pn3{background:rgba(245,107,30,.15);color:var(--orange);border:2px solid rgba(245,107,30,.35)}
+.pn4{background:rgba(139,60,247,.15);color:var(--purple);border:2px solid rgba(139,60,247,.35)}
+.pc h4{font-size:1rem;font-weight:700;margin-bottom:.6rem}
+.pc p{color:var(--muted);font-size:.85rem;line-height:1.75}
+
+/* CONTACT */
+#contact{padding:6rem 5%}
+.cinn{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.ccards{display:flex;flex-direction:column;gap:.9rem;margin-top:2rem}
+.cc{display:flex;align-items:center;gap:1.1rem;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.2rem 1.6rem;text-decoration:none;color:var(--text);transition:border-color .3s,transform .3s}
+.cc:hover{border-color:rgba(0,212,216,.3);transform:translateX(-5px)}
+.ccic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ccic svg{width:20px;height:20px}
+.cclbl{font-size:.72rem;color:var(--muted);margin-bottom:.15rem}
+.ccval{font-size:.95rem;font-weight:600}
+.ccar{margin-right:auto;color:var(--muted);transition:color .3s}
+.cc:hover .ccar{color:var(--teal)}
+.cbox{background:var(--card);border:1px solid var(--border);border-radius:26px;padding:3.5rem;text-align:center;position:relative;overflow:hidden}
+.cbox::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:260px;height:260px;border-radius:50%;background:radial-gradient(rgba(59,110,248,.13),transparent);pointer-events:none}
+.clogo img{height:70px;margin-bottom:1.8rem;mix-blend-mode:screen;filter:brightness(1.1) drop-shadow(0 0 25px rgba(59,110,248,.5))}
+.cqt{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;line-height:1.5;margin-bottom:1.2rem}
+.cqt em{font-style:italic;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.csub{color:var(--muted);font-size:.9rem;line-height:1.8}
+.wab{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;padding:.9rem 2.2rem;background:linear-gradient(135deg,#25D366,#128C7E);border-radius:50px;color:#fff;font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:700;text-decoration:none;letter-spacing:.5px;box-shadow:0 6px 25px rgba(37,211,102,.3);transition:transform .2s,box-shadow .2s}
+.wab:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(37,211,102,.5)}
+
+/* FOOTER */
+footer{background:var(--deep);border-top:1px solid var(--border);padding:2rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem}
+.fb{display:flex;align-items:center;gap:.6rem}
+.fb img{height:32px;mix-blend-mode:screen;filter:brightness(1.1)}
+.fn{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:4px}
+.fc{font-size:.75rem;color:var(--muted)}
+.fs{display:flex;gap:.6rem}
+.sb{width:36px;height:36px;border-radius:9px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--muted);transition:all .25s}
+.sb svg{width:15px;height:15px}
+.sb:hover{transform:translateY(-3px)}
+.sig:hover{background:rgba(225,48,108,.12);border-color:#E1306C;color:#E1306C}
+.swa:hover{background:rgba(37,211,102,.12);border-color:#25D366;color:#25D366}
+.stk:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);color:#fff}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(35px);transition:opacity .85s ease,transform .85s ease}
+.rv.up{opacity:1;transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .nlinks,.nwa{display:none}
+  .ham{display:flex}
+  .sinn{grid-template-columns:repeat(2,1fr)}
+  .si:nth-child(2){border-right:none}
+  .si:nth-child(3),.si:nth-child(4){border-top:1px solid var(--border)}
+  .si:nth-child(4){border-right:none}
+  #about{padding:4rem 5%}
+  .ainn{grid-template-columns:1fr;gap:3rem}
+  .sgrid{grid-template-columns:1fr}
+  .ggrid{grid-template-columns:repeat(2,1fr)}
+  .gbig{grid-column:1/3;grid-row:auto;min-height:260px}
+  .gtr{grid-column:1/2;grid-row:auto;min-height:180px}
+  .gbr{grid-column:2/3;grid-row:auto;min-height:180px}
+  .gb1{grid-column:1/2;grid-row:auto;min-height:170px}
+  .gb2{grid-column:2/3;grid-row:auto;min-height:170px}
+  .gb3{grid-column:1/3;grid-row:auto;min-height:170px}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .pgrid::before{display:none}
+  .cinn{grid-template-columns:1fr;gap:3rem}
+  .cbox{padding:2.5rem 2rem}
+  footer{flex-direction:column;text-align:center;align-items:center}
+}
+@media(max-width:480px){
+  .htitle{font-size:1.55rem}
+  .hlogo img{height:80px}
+  .hbtns{flex-direction:column;align-items:center}
+  .bp,.bg{width:100%;max-width:280px;text-align:center}
+  .ggrid{grid-template-columns:1fr}
+  .gbig,.gtr,.gbr,.gb1,.gb2,.gb3{grid-column:1;min-height:200px}
+  .pgrid{grid-template-columns:1fr}
+  .sn{font-size:2.2rem}
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--purple));border-radius:3px}
+</style>
+</head>
+<body>
+
+<div class="mmenu" id="mm">
+  <button class="mclose" onclick="closeM()">✕</button>
+  <a href="#about" onclick="closeM()">من نحن</a>
+  <a href="#services" onclick="closeM()">خدماتنا</a>
+  <a href="#gallery" onclick="closeM()">أعمالنا</a>
+  <a href="#process" onclick="closeM()">كيف نعمل</a>
+  <a href="#contact" onclick="closeM()">تواصل</a>
+  <a href="https://wa.me/966575622395" style="color:#25D366">واتساب ←</a>
+</div>
+
+<nav id="nav">
+  <div class="nl">
+    <img src="logo.png" alt="VORA">
+    <span class="nw">VORA</span>
+  </div>
+  <ul class="nlinks">
+    <li><a href="#about">من نحن</a></li>
+    <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#gallery">أعمالنا</a></li>
+    <li><a href="#process">كيف نعمل</a></li>
+    <li><a href="#contact">تواصل</a></li>
+  </ul>
+  <a href="https://wa.me/966575622395" class="nwa">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    واتساب
+  </a>
+  <div class="ham" onclick="openM()"><span></span><span></span><span></span></div>
+</nav>
+
+<section id="hero">
+  <div class="hbg"></div><div class="hgrid"></div>
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="hc">
+    <div class="hbadge">وكالة إبداعية متكاملة</div>
+    <div class="hlogo"><img src="logo.png" alt="VORA"></div>
+    <h1 class="htitle">نحوّل أفكارك إلى<br><strong>محتوى بصري استثنائي</strong></h1>
+    <p class="hsub">من التصوير الإعلاني الاحترافي إلى الهوية البصرية الكاملة — نصنع محتوى يجذب الانتباه ويرفع مبيعاتك</p>
+    <div class="hbtns">
+      <a href="#gallery" class="bp">شاهد أعمالنا</a>
+      <a href="#contact" class="bg">تواصل معنا</a>
+    </div>
+  </div>
+  <div class="sh"><span>مرر للأسفل</span><div class="shl"></div></div>
+</section>
+
+<div class="sbar rv">
+  <div class="sinn">
+    <div class="si"><div class="sn" data-target="200">0</div><div class="sl">مشروع مكتمل</div></div>
+    <div class="si"><div class="sn" data-target="80">0</div><div class="sl">عميل راضٍ</div></div>
+    <div class="si"><div class="sn">5</div><div class="sl">خدمات متكاملة</div></div>
+    <div class="si"><div class="sn">3x</div><div class="sl">نمو المبيعات</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="ainn">
+    <div class="rv" style="position:relative">
+      <div class="abox"><img src="logo.png" alt="VORA"></div>
+      <div class="atag at1">🏆 إبداع بلا حدود</div>
+      <div class="atag at2">✦ جودة احترافية</div>
+    </div>
+    <div class="rv">
+      <div class="slbl">من نحن</div>
+      <h2 class="stit">وكالة تؤمن بـ<br><em>قوة الصورة</em></h2>
+      <p class="sbod">VORA وكالة إبداعية متخصصة في بناء الهويات البصرية وتقديم محتوى إعلاني احترافي يلمس القلوب ويحرّك قرارات الشراء. نجمع بين الرؤية الإبداعية والمنهجية التسويقية لنقدّم نتائج تتجاوز التوقعات.</p>
+      <div class="afs">
+        <div class="af"><div class="afic" style="background:rgba(59,110,248,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#3b6ef8" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><span>تسليم سريع مع الحفاظ على أعلى معايير الجودة</span></div>
+        <div class="af"><div class="afic" style="background:rgba(0,212,216,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#00d4d8" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span>نهج تسويقي مدروس يستهدف جمهورك بدقة</span></div>
+        <div class="af"><div class="afic" style="background:rgba(245,107,30,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#f56b1e" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><span>شراكة حقيقية — نتابع معك حتى تحقيق الهدف</span></div>
+        <div class="af"><div class="afic" style="background:rgba(139,60,247,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#8b3cf7" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span>أفكار إبداعية أصيلة مصممة لطبيعة علامتك</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="swrap">
+    <div class="rv" style="max-width:550px"><div class="slbl">خدماتنا</div><h2 class="stit">كل ما تحتاجه<br><em>تحت سقف واحد</em></h2><p class="sbod">منظومة إبداعية متكاملة تغطي كل جوانب هويّتك البصرية والتسويقية</p></div>
+    <div class="sgrid">
+      <div class="sv s1 rv"><div class="svic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><h3>التصوير والإنتاج الإعلاني</h3><p>تصوير إعلاني احترافي ومقاطع مرئية قصيرة مصممة لمنصات التواصل بجودة تعكس احترافية علامتك.</p><div class="sva">اكتشف المزيد ←</div></div>
+      <div class="sv s2 rv"><div class="svic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h3>التصوير الاحترافي والتصميم</h3><p>صور احترافية عالية الجودة مع تصاميم مخصصة — من تصوير المنتجات إلى البورترية المؤسسي.</p><div class="sva">اكتشف المزيد ←</div></div>
+      <div class="sv s3 rv"><div class="svic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>المراجعون والمؤثرون</h3><p>نوصلك بمراجعين ومؤثرين لرفع الوعي بعلامتك وزيادة المبيعات بطريقة عضوية وموثوقة.</p><div class="sva">اكتشف المزيد ←</div></div>
+      <div class="sv s4 rv"><div class="svic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg></div><h3>الهوية البصرية الكاملة</h3><p>شعار، واجهة، اسم تجاري، ودليل بصري كامل — نبني شخصيتك الإبداعية من الصفر.</p><div class="sva">اكتشف المزيد ←</div></div>
+      <div class="sv s5 rv"><div class="svic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div><h3>المطبوعات بجميع أنواعها</h3><p>كروت، بروشورات، منيو، تيشيرتات، واجهات وغيرها — بجودة طباعة عالية وتصميم مميز.</p><div class="sva">اكتشف المزيد ←</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="gwrap">
+    <div class="ghead rv"><div><div class="slbl">معرض الأعمال</div><h2 class="stit">إبداع<br><em>يتحدث عن نفسه</em></h2></div><p class="sbod" style="max-width:280px">نماذج حقيقية من مشاريعنا التي صنعت فارقاً لعملائنا</p></div>
+    <div class="ggrid rv">
+      <div class="gi gbig"><img src="portfolio1.png" alt="مورين" loading="lazy"><div class="cb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> تصميم إعلاني</div><div class="gov"><div><div class="glbl">مورين — إعلان منتج</div><div class="gsub">هوية بصرية + تصوير</div></div></div></div>
+      <div class="gi gtr"><img src="portfolio2.png" alt="فاليوم" loading="lazy"><div class="cb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> داخلي</div><div class="gov"><div><div class="glbl">فاليوم — جلسة داخلية</div><div class="gsub">تصوير كافيه</div></div></div></div>
+      <div class="gi gbr"><img src="portfolio3.png" alt="فاليوم واجهة" loading="lazy"><div class="cb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> خارجي</div><div class="gov"><div><div class="glbl">فاليوم — واجهة</div><div class="gsub">تصوير معماري</div></div></div></div>
+      <div class="gi gb1"><img src="portfolio4.jpg" alt="شفاف" loading="lazy"><div class="cb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> واجهات</div><div class="gov"><div><div class="glbl">شفاف — واجهة منشأة</div><div class="gsub">تصوير احترافي</div></div></div></div>
+      <div class="gi gb2"><img src="portfolio5.png" alt="VORA" loading="lazy"><div class="cb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> تصميم</div><div class="gov"><div><div class="glbl">VORA — تصميم إبداعي</div><div class="gsub">هوية بصرية</div></div></div></div>
+      <div class="gi gb3"><img src="portfolio6.png" alt="VORA 2" loading="lazy"><div class="cb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> إعلان</div><div class="gov"><div><div class="glbl">VORA — إعلان إبداعي</div><div class="gsub">تصوير + تصميم</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="pwrap">
+    <div class="rv" style="text-align:center;max-width:500px;margin:0 auto"><div class="slbl" style="justify-content:center">كيف نعمل</div><h2 class="stit">رحلتك معنا في<br><em>4 خطوات</em></h2><p class="sbod" style="margin:0 auto">من الفكرة الأولى حتى التسليم النهائي</p></div>
+    <div class="pgrid">
+      <div class="pc rv"><div class="pn pn1">١</div><h4>الاستشارة والتحليل</h4><p>نجلس معك لفهم رؤيتك وأهدافك وجمهورك المستهدف</p></div>
+      <div class="pc rv"><div class="pn pn2">٢</div><h4>التصميم والإبداع</h4><p>صياغة المفاهيم الإبداعية والأفكار التي تعكس هويتك</p></div>
+      <div class="pc rv"><div class="pn pn3">٣</div><h4>التنفيذ والإنتاج</h4><p>تنفيذ فعلي بأعلى جودة — تصوير، تصميم، طباعة</p></div>
+      <div class="pc rv"><div class="pn pn4">٤</div><h4>التسليم والمتابعة</h4><p>نسلّمك النتائج ونبقى بجانبك لضمان الأثر المطلوب</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cinn">
+    <div class="rv">
+      <div class="slbl">تواصل معنا</div>
+      <h2 class="stit">نحن هنا<br><em>لأجلك</em></h2>
+      <p class="sbod">فريقنا جاهز للرد على استفساراتك وتقديم أفضل الحلول</p>
+      <div class="ccards">
+        <a href="https://wa.me/966575622395" class="cc"><div class="ccic" style="background:rgba(37,211,102,.12)"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div><div><div class="cclbl">واتساب</div><div class="ccval">+966 57 562 2395</div></div><span class="ccar">←</span></a>
+        <a href="https://instagram.com/vora" class="cc"><div class="ccic" style="background:rgba(225,48,108,.12)"><svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div><div><div class="cclbl">إنستغرام</div><div class="ccval">@vora</div></div><span class="ccar">←</span></a>
+        <a href="https://tiktok.com/@vora" class="cc"><div class="ccic" style="background:rgba(255,255,255,.07)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></div><div><div class="cclbl">تيك توك</div><div class="ccval">@vora</div></div><span class="ccar">←</span></a>
+        <a href="mailto:hello@vora.sa" class="cc"><div class="ccic" style="background:rgba(59,110,248,.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#3b6ef8" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="cclbl">البريد</div><div class="ccval">hello@vora.sa</div></div><span class="ccar">←</span></a>
+      </div>
+    </div>
+    <div class="cbox rv">
+      <div class="clogo"><img src="logo.png" alt="VORA"></div>
+      <div class="cqt">فكرتك تستحق أن تُرى بـ<em>أفضل صورة</em></div>
+      <p class="csub">تواصل معنا الآن واحصل على استشارة مجانية — نسمع فكرتك ونبني معك خطة العمل المثالية</p>
+      <a href="https://wa.me/966575622395" class="wab">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        ابدأ رحلتك الآن
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb"><img src="logo.png" alt="VORA"><span class="fn">VORA</span></div>
+  <p class="fc">© 2026 VORA — جميع الحقوق محفوظة</p>
+  <div class="fs">
+    <a href="https://instagram.com/vora" class="sb sig" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://wa.me/966575622395" class="sb swa" title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    <a href="https://tiktok.com/@vora" class="sb stk" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>50));
+function openM(){document.getElementById('mm').classList.add('open');document.body.style.overflow='hidden'}
+function closeM(){document.getElementById('mm').classList.remove('open');document.body.style.overflow=''}
+const obs=new IntersectionObserver(es=>{es.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('up'),i*90)})},{threshold:0.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!e.target._d){e.target._d=true;const n=+e.target.dataset.target;let c=0;const t=setInterval(()=>{c+=n/50;if(c>=n){c=n;clearInterval(t)}e.target.textContent='+'+Math.floor(c)},28)}})},{threshold:0.5});
+document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
+</script>
+</body>
+</html>
